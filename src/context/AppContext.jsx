@@ -11,27 +11,45 @@ const defaultCategories = [
   { id: '7', name: 'Entertainment', color: '#ec4899' },
 ];
 
+const defaultProfile = { name: 'User', email: 'user@example.com', avatar: null };
+
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
   const [transactions, setTransactions] = useLocalStorage('transactions', []);
   const [categories, setCategories] = useLocalStorage('categories', defaultCategories);
+  const [darkMode, setDarkMode] = useLocalStorage('darkMode', false);
+  const [userProfile, setUserProfile] = useLocalStorage('userProfile', defaultProfile);
+
+  const toggleDarkMode = useCallback(() => {
+    setDarkMode((prev) => !prev);
+  }, [setDarkMode]);
+
+  const updateUserProfile = useCallback((updates) => {
+    setUserProfile((prev) => ({ ...prev, ...updates }));
+  }, [setUserProfile]);
 
   const addTransaction = useCallback((t) => {
     setTransactions((prev) => [t, ...prev]);
   }, [setTransactions]);
-
   const deleteTransaction = useCallback((id) => {
     setTransactions((prev) => prev.filter((t) => t.id !== id));
   }, [setTransactions]);
-
   const addCategory = useCallback((cat) => {
     setCategories((prev) => [...prev, cat]);
   }, [setCategories]);
-
   const deleteCategory = useCallback((id) => {
     setCategories((prev) => prev.filter((c) => c.id !== id));
   }, [setCategories]);
+  const replaceTransactions = useCallback((txns) => {
+    setTransactions(txns);
+  }, [setTransactions]);
+  const replaceCategories = useCallback((cats) => {
+    setCategories(cats);
+  }, [setCategories]);
+  const mergeTransactions = useCallback((txns) => {
+    setTransactions((prev) => [...txns, ...prev]);
+  }, [setTransactions]);
 
   const stats = useMemo(() => {
     const income = transactions
@@ -44,9 +62,14 @@ export function AppProvider({ children }) {
   }, [transactions]);
 
   const value = useMemo(() => ({
-    transactions, categories, stats,
+    transactions, categories, stats, darkMode, userProfile,
     addTransaction, deleteTransaction, addCategory, deleteCategory,
-  }), [transactions, categories, stats, addTransaction, deleteTransaction, addCategory, deleteCategory]);
+    replaceTransactions, replaceCategories, mergeTransactions,
+    toggleDarkMode, setDarkMode, updateUserProfile,
+  }), [transactions, categories, stats, darkMode, userProfile,
+      addTransaction, deleteTransaction, addCategory, deleteCategory,
+      replaceTransactions, replaceCategories, mergeTransactions,
+      toggleDarkMode, setDarkMode, updateUserProfile]);
 
   return (
     <AppContext.Provider value={value}>

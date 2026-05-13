@@ -30,8 +30,8 @@ const cards = [
     label: 'Total Income',
     key: 'income',
     chart: 'up',
-    gradient: 'from-emerald-500 to-emerald-600',
     light: 'bg-emerald-50',
+    darkBg: 'dark:bg-emerald-500/10',
     iconBg: 'text-emerald-600',
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -43,8 +43,8 @@ const cards = [
     label: 'Total Expenses',
     key: 'expenses',
     chart: 'down',
-    gradient: 'from-rose-500 to-rose-600',
     light: 'bg-rose-50',
+    darkBg: 'dark:bg-rose-500/10',
     iconBg: 'text-rose-600',
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -56,8 +56,8 @@ const cards = [
     label: 'Transactions',
     key: 'count',
     chart: 'neutral',
-    gradient: 'from-indigo-500 to-indigo-600',
     light: 'bg-indigo-50',
+    darkBg: 'dark:bg-indigo-500/10',
     iconBg: 'text-indigo-600',
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -69,8 +69,8 @@ const cards = [
     label: 'Balance',
     key: 'balance',
     chart: 'up',
-    gradient: 'from-violet-500 to-violet-600',
     light: 'bg-violet-50',
+    darkBg: 'dark:bg-violet-500/10',
     iconBg: 'text-violet-600',
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -88,15 +88,15 @@ export default function SummaryCards({ stats }) {
         return (
           <div
             key={card.key}
-            className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300 group"
+            className="bg-white rounded-2xl border border-slate-100 p-5 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300 group dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600"
           >
             <div className="flex items-center justify-between mb-3">
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{card.label}</p>
-              <div className={`w-9 h-9 rounded-xl ${card.light} flex items-center justify-center ${card.iconBg} group-hover:scale-110 transition-transform duration-300`}>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider dark:text-slate-400">{card.label}</p>
+              <div className={`w-9 h-9 rounded-xl ${card.light} ${card.darkBg} flex items-center justify-center ${card.iconBg} group-hover:scale-110 transition-transform duration-300`}>
                 {card.icon}
               </div>
             </div>
-            <p className="text-xl font-bold text-slate-900 mb-2">{value}</p>
+            <p className="text-xl font-bold text-slate-900 mb-2 dark:text-slate-100">{value}</p>
             <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
               <MiniChart type={card.chart} />
             </div>

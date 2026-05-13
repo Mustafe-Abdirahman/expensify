@@ -63,33 +63,33 @@ export default function TransactionForm({ onSubmit }) {
           <HiOutlineTag className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Add Transaction</h2>
-          <p className="text-xs text-slate-400">Record a new income or expense</p>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Add Transaction</h2>
+          <p className="text-xs text-slate-400 dark:text-slate-400">Record a new income or expense</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4">
         <div className="md:col-span-2">
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Title</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5 dark:text-slate-400">Title</label>
           <input
             ref={titleRef}
             type="text"
             placeholder="e.g. Grocery shopping"
             value={form.title}
             onChange={(e) => handleChange('title', e.target.value)}
-            className={`w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 transition-all ${
+            className={`w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all dark:bg-slate-700/50 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 focus:outline-none focus:ring-2 ${
               errors.title
-                ? 'border-rose-200 focus:border-rose-400 focus:ring-rose-500/20'
-                : 'border-slate-200 focus:border-indigo-400 focus:ring-indigo-500/20'
+                ? 'border-rose-200 dark:border-rose-400/50 focus:border-rose-400 focus:ring-rose-500/20'
+                : 'border-slate-200 dark:border-slate-600 focus:border-indigo-400 focus:ring-indigo-500/20'
             }`}
           />
-          {errors.title && <p className="text-xs text-rose-500 mt-1">{errors.title}</p>}
+          {errors.title && <p className="text-xs text-rose-500 mt-1 dark:text-rose-400">{errors.title}</p>}
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Amount</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5 dark:text-slate-400">Amount</label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">$</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-sm font-medium">$</span>
             <input
               type="number"
               step="0.01"
@@ -97,25 +97,25 @@ export default function TransactionForm({ onSubmit }) {
               placeholder="0.00"
               value={form.amount}
               onChange={(e) => handleChange('amount', e.target.value)}
-              className={`w-full pl-7 pr-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 transition-all ${
+              className={`w-full pl-7 pr-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 placeholder-slate-400 transition-all dark:bg-slate-700/50 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 focus:outline-none focus:ring-2 ${
                 errors.amount
-                  ? 'border-rose-200 focus:border-rose-400 focus:ring-rose-500/20'
-                  : 'border-slate-200 focus:border-indigo-400 focus:ring-indigo-500/20'
+                  ? 'border-rose-200 dark:border-rose-400/50 focus:border-rose-400 focus:ring-rose-500/20'
+                  : 'border-slate-200 dark:border-slate-600 focus:border-indigo-400 focus:ring-indigo-500/20'
               }`}
             />
           </div>
-          {errors.amount && <p className="text-xs text-rose-500 mt-1">{errors.amount}</p>}
+          {errors.amount && <p className="text-xs text-rose-500 mt-1 dark:text-rose-400">{errors.amount}</p>}
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Category</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5 dark:text-slate-400">Category</label>
           <select
             value={form.category}
             onChange={(e) => handleChange('category', e.target.value)}
-            className={`w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 transition-all ${
+            className={`w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 transition-all dark:bg-slate-700/50 dark:border-slate-600 dark:text-slate-100 focus:outline-none focus:ring-2 ${
               errors.category
-                ? 'border-rose-200 focus:border-rose-400 focus:ring-rose-500/20'
-                : 'border-slate-200 focus:border-indigo-400 focus:ring-indigo-500/20'
+                ? 'border-rose-200 dark:border-rose-400/50 focus:border-rose-400 focus:ring-rose-500/20'
+                : 'border-slate-200 dark:border-slate-600 focus:border-indigo-400 focus:ring-indigo-500/20'
             }`}
           >
             <option value="">Select category</option>
@@ -123,34 +123,34 @@ export default function TransactionForm({ onSubmit }) {
               <option key={cat.id} value={cat.name}>{cat.name}</option>
             ))}
           </select>
-          {errors.category && <p className="text-xs text-rose-500 mt-1">{errors.category}</p>}
+          {errors.category && <p className="text-xs text-rose-500 mt-1 dark:text-rose-400">{errors.category}</p>}
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Date</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5 dark:text-slate-400">Date</label>
           <input
             type="date"
             value={form.date}
             onChange={(e) => handleChange('date', e.target.value)}
-            className={`w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 transition-all ${
+            className={`w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-sm text-slate-800 transition-all dark:bg-slate-700/50 dark:border-slate-600 dark:text-slate-100 focus:outline-none focus:ring-2 ${
               errors.date
-                ? 'border-rose-200 focus:border-rose-400 focus:ring-rose-500/20'
-                : 'border-slate-200 focus:border-indigo-400 focus:ring-indigo-500/20'
+                ? 'border-rose-200 dark:border-rose-400/50 focus:border-rose-400 focus:ring-rose-500/20'
+                : 'border-slate-200 dark:border-slate-600 focus:border-indigo-400 focus:ring-indigo-500/20'
             }`}
           />
-          {errors.date && <p className="text-xs text-rose-500 mt-1">{errors.date}</p>}
+          {errors.date && <p className="text-xs text-rose-500 mt-1 dark:text-rose-400">{errors.date}</p>}
         </div>
 
         <div className="md:col-span-2">
-          <label className="block text-xs font-medium text-slate-500 mb-1.5">Type</label>
+          <label className="block text-xs font-medium text-slate-500 mb-1.5 dark:text-slate-400">Type</label>
           <div className="flex gap-3">
             <button
               type="button"
               onClick={() => handleChange('type', 'expense')}
               className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 form.type === 'expense'
-                  ? 'bg-rose-500 text-white shadow-md shadow-rose-200/50'
-                  : 'bg-slate-50 text-slate-500 border border-slate-200 hover:border-rose-200 hover:text-rose-600'
+              ? 'bg-rose-500 text-white shadow-md shadow-rose-200/50 dark:shadow-rose-800/30'
+              : 'bg-slate-50 text-slate-500 border border-slate-200 hover:border-rose-200 hover:text-rose-600 dark:bg-slate-700/50 dark:border-slate-600 dark:text-slate-400 dark:hover:border-rose-400 dark:hover:text-rose-400'
               }`}
             >
               Expense
@@ -160,8 +160,8 @@ export default function TransactionForm({ onSubmit }) {
               onClick={() => handleChange('type', 'income')}
               className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 form.type === 'income'
-                  ? 'bg-emerald-500 text-white shadow-md shadow-emerald-200/50'
-                  : 'bg-slate-50 text-slate-500 border border-slate-200 hover:border-emerald-200 hover:text-emerald-600'
+              ? 'bg-emerald-500 text-white shadow-md shadow-emerald-200/50 dark:shadow-emerald-800/30'
+              : 'bg-slate-50 text-slate-500 border border-slate-200 hover:border-emerald-200 hover:text-emerald-600 dark:bg-slate-700/50 dark:border-slate-600 dark:text-slate-400 dark:hover:border-emerald-400 dark:hover:text-emerald-400'
               }`}
             >
               Income
@@ -172,7 +172,7 @@ export default function TransactionForm({ onSubmit }) {
 
       <button
         type="submit"
-        className="mt-6 w-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white text-sm font-semibold py-3 rounded-xl hover:from-indigo-700 hover:to-indigo-800 shadow-md shadow-indigo-200/50 transition-all duration-200 active:scale-[0.98]"
+        className="mt-6 w-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white text-sm font-semibold py-3 rounded-xl hover:from-indigo-700 hover:to-indigo-800 shadow-md shadow-indigo-200/50 dark:shadow-indigo-800/30 transition-all duration-200 active:scale-[0.98]"
       >
         Add Transaction
       </button>

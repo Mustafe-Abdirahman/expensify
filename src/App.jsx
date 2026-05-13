@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { AppProvider } from './context/AppContext';
+import { useState, useEffect } from 'react';
+import { AppProvider, useApp } from './context/AppContext';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import CategoryManager from './components/CategoryManager';
@@ -23,9 +23,14 @@ const pageTitles = {
 };
 
 function AppContent() {
+  const { darkMode } = useApp();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activePage, setActivePage] = useState('dashboard');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode);
+  }, [darkMode]);
 
   const handleNavigate = (page) => {
     if (page === 'categories') {
@@ -38,7 +43,7 @@ function AppContent() {
   const Page = pageComponents[activePage] || Dashboard;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50">
+    <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-900">
       <Sidebar
         activePage={activePage}
         onNavigate={handleNavigate}
@@ -50,7 +55,7 @@ function AppContent() {
           pageTitle={pageTitles[activePage] || 'Dashboard'}
           onMenuClick={() => setSidebarOpen(true)}
         />
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto dark:bg-slate-900">
           <Page />
         </main>
       </div>

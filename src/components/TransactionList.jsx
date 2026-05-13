@@ -9,7 +9,7 @@ export default function TransactionList({ transactions, onDelete }) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between px-1 mb-3">
-        <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+        <p className="text-xs font-medium text-slate-400 uppercase tracking-wider dark:text-slate-500">
           {transactions.length} {transactions.length === 1 ? 'transaction' : 'transactions'}
         </p>
       </div>

@@ -1,3 +1,4 @@
+import { useApp } from '../context/AppContext';
 import {
   HiOutlineSquares2X2,
   HiOutlineWallet,
@@ -7,19 +8,23 @@ import {
   HiOutlineXMark,
 } from 'react-icons/hi2';
 
+const navItems = [
+  { label: 'Dashboard', icon: HiOutlineSquares2X2, value: 'dashboard' },
+  { label: 'Transactions', icon: HiOutlineWallet, value: 'transactions' },
+  { label: 'Analytics', icon: HiOutlineChartBar, value: 'analytics' },
+  { label: 'Categories', icon: HiOutlineTag, value: 'categories' },
+  { label: 'Settings', icon: HiOutlineCog, value: 'settings' },
+];
+
 export default function Sidebar({ activePage, onNavigate, isOpen, onClose }) {
-  const navItems = [
-    { label: 'Dashboard', icon: HiOutlineSquares2X2, value: 'dashboard' },
-    { label: 'Transactions', icon: HiOutlineWallet, value: 'transactions' },
-    { label: 'Analytics', icon: HiOutlineChartBar, value: 'analytics' },
-    { label: 'Categories', icon: HiOutlineTag, value: 'categories' },
-    { label: 'Settings', icon: HiOutlineCog, value: 'settings' },
-  ];
+  const { userProfile } = useApp();
+  const initials = (userProfile?.name || 'U').charAt(0).toUpperCase();
+
   return (
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden dark:bg-black/70"
           onClick={onClose}
         />
       )}
@@ -69,8 +74,20 @@ export default function Sidebar({ activePage, onNavigate, isOpen, onClose }) {
           })}
         </nav>
 
-        <div className="px-6 py-4 border-t border-slate-800">
-          <p className="text-xs text-slate-500">© 2026 Expense Tracker</p>
+        <div className="px-4 py-4 border-t border-slate-800">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold shadow-md shadow-indigo-500/30 flex-shrink-0 overflow-hidden">
+              {userProfile?.avatar ? (
+                <img src={userProfile.avatar} alt="" className="w-full h-full object-cover" />
+              ) : (
+                initials
+              )}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-white truncate">{userProfile?.name || 'User'}</p>
+              <p className="text-[10px] text-slate-400 truncate">{userProfile?.email || ''}</p>
+            </div>
+          </div>
         </div>
       </aside>
     </>

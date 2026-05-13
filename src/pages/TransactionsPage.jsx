@@ -11,8 +11,8 @@ export default function TransactionsPage() {
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-6 max-w-4xl mx-auto">
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-slate-900">All Transactions</h3>
-        <p className="text-sm text-slate-400">{transactions.length} total transactions</p>
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">All Transactions</h3>
+        <p className="text-sm text-slate-400 dark:text-slate-500">{transactions.length} total transactions</p>
       </div>
       <div className="space-y-4">
         <FilterTabs
