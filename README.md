@@ -48,23 +48,13 @@ All categories stored in localStorage.
 
 ---
 
-## 👤 Profile Management (NEW)
+## 👤 Profile Management 
 - Change profile name
 - Change email
 - Upload profile image
 - Remove profile image
 - Instant update across app (Sidebar + Header)
 - Stored in localStorage
-
----
-
-## 🌙 Dark Mode (FULL FIXED)
-- Global dark mode support
-- Works across entire app
-- Persistent theme storage
-- Instant toggle without refresh
-- Fully compatible UI components
-
 ---
 
 ## 📁 Import / Export System
@@ -83,7 +73,6 @@ All categories stored in localStorage.
 ---
 
 ## 🎨 Modern UI/UX
-- SaaS-style dashboard design
 - Sidebar navigation
 - Responsive layout
 - Glassmorphism cards
@@ -105,14 +94,7 @@ All categories stored in localStorage.
 - Context API
 - LocalStorage
 
-## Libraries
-- react-icons
-- uuid
-- recharts
-- xlsx
-- file-saver
 
----
 
 # 📂 Project Structure
 src/
