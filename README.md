@@ -1,4 +1,4 @@
-# 💰 Expense Tracker SaaS Dashboard
+# 💰 Expense Tracker
 
 A modern, fully responsive **Expense Tracker Web Application** built with:
 
