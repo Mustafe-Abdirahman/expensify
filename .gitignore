@@ -33,15 +33,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Kilo / Kilo Code
-.kilo/
-kilo/
-.kilo-code/
-kilo-code/
 
-# Specify
-.specify/
-specify/
 
 # Cache files
 .cache/
